@@ -7,5 +7,7 @@
     git: repo=https://github.com/taigaio/taiga-back.git
          dest=/taiga-back
          version=stable
-#  - name: install python3-pip
-#    apt: name=python3-pip state=present
+  - name: virtualenv for taiga
+    shell: cd /taiga-back && virtualenv -p /usr/bin/python3.4 taiga
+  - name: pip install taiga requirements
+    pip: requirements=/taiga-back/requirements.txt
