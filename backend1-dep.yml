@@ -1,0 +1,17 @@
+---
+- hosts: taiga-dev
+  remote_user: vxprt
+  sudo: yes
+  tasks:
+  - name: install build-essentials
+    apt: name=build-essential state=present
+  - name: install binutils-doc
+    apt: name=binutils-doc state=present
+  - name: install autoconf
+    apt: name=autoconf state=present
+  - name: install flex
+    apt: name=flex state=present
+  - name: install bison
+    apt: name=bison state=present
+  - name: install libjpeg-dev
+    apt: name=libjpeg-dev state=present

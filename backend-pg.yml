@@ -1,0 +1,22 @@
+---
+- hosts: taiga-dev
+  remote_user: vxprt
+  sudo: yes
+  tasks:
+  - name: install postgresql-9.3
+    apt: name=postgresql-9.3 state=present
+  - name: install postgresql-contrib-9.3
+    apt: name=postgresql-contrib-9.3 state=present
+  - name: install postgresql-doc-9.3
+    apt: name=postgresql-doc-9.3 state=present
+  - name: install postgresql-server-dev-9.3
+    apt: name=postgresql-server-dev-9.3 state=present
+# Not sure if needed in Ubuntu
+#  - name: initialize postgresql
+#    shell: service postgresql-9.3 initdb
+#  notify:
+#     - start postgres
+# 
+#  handlers:
+#     - name: start postgres
+#     service: name=postgresql-9.3 state=started enabled=yes

@@ -1,0 +1,38 @@
+---
+- hosts: taiga-dev
+  remote_user: vxprt
+  sudo: yes
+  tasks:
+  - name: install python3
+    apt: name=python3 state=present
+  - name: install python3-pip
+    apt: name=python3-pip state=present
+  - name: install python-dev
+    apt: name=python-dev state=present
+  - name: install python3-dev
+    apt: name=python3-dev state=present
+  - name: install python-pip
+    apt: name=python-pip state=present
+  - name: install virtualenvwrapper
+    apt: name=virtualenvwrapper state=present
+  - name: install libxml2-dev
+    apt: name=libxml2-dev state=present
+  - name: install libxslt-dev
+    apt: name=libxslt-dev state=present
+    notify:
+       - restart host
+       - waiting for host to come back
+  handlers:
+     - name: restart host
+       command: shutdown -r now "Ansible Python install"
+       async: 0
+       poll: 0
+       ignore_errors: true
+     - name: waiting for host to come back
+       local_action: 
+         module: wait_for
+           host="192.168.239.128"
+           port=22
+           delay=1
+           timeout=300
+         sudo: false
