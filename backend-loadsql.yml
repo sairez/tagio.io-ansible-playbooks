@@ -1,0 +1,13 @@
+---
+- hosts: taiga-dev
+  remote_user: vxprt
+  sudo: yes
+  tasks:
+  - name: checkout taiga backend
+    git: repo=https://github.com/taigaio/taiga-back.git
+         dest=/taiga-back
+         version=stable
+  - name: virtualenv for taiga
+    shell: cd /taiga-back && virtualenv -p /usr/bin/python3.4 taiga
+  - name: pip install taiga requirements
+    pip: requirements=/taiga-back/requirements.txt
