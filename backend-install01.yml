@@ -1,0 +1,11 @@
+---
+- hosts: taiga-dev
+  remote_user: vxprt
+  sudo: yes
+  tasks:
+  - name: checkout taiga backend
+    git: repo=https://github.com/taigaio/taiga-back.git
+         dest=/taiga-back
+         version=stable
+#  - name: install python3-pip
+#    apt: name=python3-pip state=present

@@ -1,0 +1,12 @@
+---
+- hosts: taiga-dev
+  remote_user: vxprt
+  sudo_user: postgres
+  sudo: yes
+  tasks:
+# Create a new db user
+  - name: create postgres user
+    postgresql_user: name=taiga
+# Create a new database
+  - name: create new postgres db
+    postgresql_db: name=taiga

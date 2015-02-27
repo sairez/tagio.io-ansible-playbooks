@@ -19,6 +19,8 @@
     apt: name=libxml2-dev state=present
   - name: install libxslt-dev
     apt: name=libxslt-dev state=present
+  - name: install python-psycopg2
+    pip: name=psycopg2
     notify:
        - restart host
        - waiting for host to come back

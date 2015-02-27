@@ -1,0 +1,9 @@
+---
+- hosts: taiga-dev
+  remote_user: vxprt
+  sudo: yes
+  tasks:
+  - name: apt-get update
+    shell: sudo apt-get update 
+  - name: install libpq-dev
+    apt: name=libpq-dev state=present
