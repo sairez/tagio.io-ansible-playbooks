@@ -1,6 +1,6 @@
 ---
-- hosts: all
-  remote_user: sarahz
+- hosts: taiga-dev
+  remote_user: vxprt
   sudo: yes
   tasks:
   - name: install python3
@@ -30,7 +30,7 @@
        ignore_errors: true
      - name: waiting for host to come back
        wait_for: >
-         host="52.1.136.33"
+         host="{{ansible_hostname}}"
          port=22
          delay=1
          timeout=300
