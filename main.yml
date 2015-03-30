@@ -1,4 +1,11 @@
 ---
-- include: backend1-dep.yml
-- include: backend2-dep.yml
-- include: backend3-dep.yml 
+- hosts: taiga-dev
+  sudo: yes
+  remote_user: vxprt
+- include: backend-dep1.yml
+- include: backend-dep2.yml
+- include: backend-dep3.yml 
+- include: backend-dep4.yml
+- include: backend-py.yml
+- include: backend-pg.yml
+- include: backend-install01.yml

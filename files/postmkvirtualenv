@@ -1,0 +1,4 @@
+#!/bin/bash
+# This hook is run after a new virtualenv is activated.
+PY_VERSION=`ls $VIRTUAL_ENV/lib/`
+echo 'import sys;sys.setdefaultencoding("utf-8")' > $VIRTUAL_ENV/lib/$PY_VERSION/site-packages/sitecustomize.py
