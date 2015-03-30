@@ -18,7 +18,7 @@
     copy: src='files/postmkvirtualenv' dest='~/.virtualenvs/postmkvirtualenv'
 
   - name: create virtualenv for taiga
-    shell: virtualenv -p /usr/bin/python3.4 taiga chdir='/taiga-back' creates='{{install_dir}}/{{venv}}/bin/activate'
+    shell: virtualenv -p /usr/bin/python3.4 taiga chdir='{{install_dir}}' creates='{{install_dir}}/{{venv}}/bin/activate'
 
   - name: pip install taiga requirements
     pip: requirements={{install_dir}}/requirements.txt virtualenv={{install_dir}}/{{venv}}
